@@ -14,9 +14,9 @@
   "keywords": [],
   "author": "Yevgeniia Pliasova",
   "license": "ISC",
-  // "bugs": {
-  //   "url": "https://github.com/goitacademy/parcel-project-template/issues"
-  // },
+  "bugs": {
+    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+  },
   "dependencies": {
     "modern-normalize": "^1.1.0"
   },
