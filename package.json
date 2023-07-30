@@ -2,14 +2,14 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Zhenya-Plyasova.github.io/hometask1",
+  "homepage": "https://Zhenya-Plyasova.github.io/first-hometask",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /parcel-project-template/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Zhenya-Plyasova/hometask1"
+    "url": "git+https://github.com/Zhenya-Plyasova/first-hometask"
   },
   "keywords": [],
   "author": "Yevgeniia Pliasova",
