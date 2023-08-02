@@ -16,27 +16,40 @@ export function toggleModal() {
 };
 
 export function createModalMarkup(note, text) {
-  modalMarkup = forModalMarkup(note);
-  refs.modalForm.innerHTML = modalMarkup;
+    modalMarkup = forModalMarkup(note);
+    
+    refs.modalForm.innerHTML = modalMarkup;
+    refs.modalForm.innerHTML = modalMarkup;
+    const categorySelect = refs.modalForm.querySelector('[name="category"]');
+    const optionToSelect = categorySelect.querySelector(
+      `option[value="${note.category}"]`
+    );
+    if (optionToSelect) {
+      optionToSelect.setAttribute('selected', 'selected');
+    }
   refs.modalTitle.innerHTML = `${text}`;
 };
 
 const onSubmitModalForm =(e)=>{
     e.preventDefault();
-    if(refs.modalForm.id){
-      createNewNote(e);
-      addNewNote(refs.note); 
+    try {
+        if (refs.modalForm.id) {
+          createNewNote(e);
+          addNewNote(refs.note);
+        } else {
+          editNote(e);
+          saveEditedNote(refs.index);
+          refs.index = '';
+        }
+        refs.note = {};
+        e.currentTarget.reset();
+        createMarkupNotesList(notes);
+        toggleModal();
+        refs.modalForm.removeAttribute('id');
+    } catch (error) {
+        
     }
-    else{
-    editNote(e);
-    saveEditedNote(refs.index);
-    refs.index="";
-    }
-    refs.note={};
-    e.currentTarget.reset();
-    createMarkupNotesList(notes);
-    toggleModal();
-    refs.modalForm.removeAttribute("id");
+    
 }
 
 refs.modalForm.addEventListener('submit', onSubmitModalForm);

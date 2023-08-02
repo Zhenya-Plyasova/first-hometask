@@ -1,12 +1,21 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+.page-container{
+    width: auto;
+    margin: 30px 70px 20px 80px;
+}
+section{
+    margin-bottom: 30px;
+}
 .headlines {
     background-color: rgb(149, 154, 155);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 15px;
+    padding-left: 15px;
     color: white;
     border-radius: 7px;
+    height: 50px;
+    align-items: center;
 }
 .task{
     display: flex;
@@ -17,7 +26,8 @@
     margin-bottom: 10px;
     border-radius: 7px;
 }
-.tasks-list{
+.tasks-list,
+.categories-list{
     list-style: none;
     padding: 0;
 }
@@ -25,23 +35,56 @@ h3{
     width: 240px;
     height: 30px;
     overflow: hidden;
+    &:first-child{
+        width: 300px;
+    };
+    &:nth-child(3){
+        width: 160px;
+    }
+    &:nth-child(2) {
+        width: 170px;
+    }
 }
 p{
     padding-left: 15px;
     padding-bottom: 0;
-    width: 230px;
+    width: 240px;
     overflow: hidden;
+        &:nth-child(3) {
+                width: 160px;
+            }
+        &:nth-child(2) {
+                width: 170px;
+            }
+}
+.icon{
+    padding: 0;
+    margin-left: 5px;
 }
 .icon-button{
     color: inherit;
     padding: 0;
+    margin-left: 5px;
     border: none;
     background-color: inherit;
+        &:hover,
+        &:focus {
+            background-color: inherit;
+            color: white;
+            fill: rgb(95, 100, 128);
+            }
 }
 .buttons-container{
 display: flex;
+align-items: center;
+margin-right: 10px;
+}
+.button-container{
+    display: flex;
+    justify-content: end;
 }
 button{
+    cursor: pointer;
     border: gray;
     border-radius: 7px;
     background-color: rgb(225, 235, 238);

@@ -1,9 +1,9 @@
 import { notes, archivedNotes } from "./notes";
-import {refs} from "./refs";
+import { refs } from "./refs";
 import { toggleModal } from "./modal";
 import {createModalMarkup} from "./modal";
-
 import { noteMarkup } from "./markup";
+import { createCategoryMarkup } from "./categories-list";
 
 let markup = "";
 
@@ -41,7 +41,7 @@ export function createMarkupNotesList(notes){
   return noteMarkup(note)
     }).join("");
     refs.notesList.innerHTML=markup;
-    refs.notesContainer.addEventListener('click', onButtonClick)
+  refs.notesContainer.addEventListener('click', onButtonClick);
+  createCategoryMarkup(refs.categories);
 }
 createMarkupNotesList(notes);
-
