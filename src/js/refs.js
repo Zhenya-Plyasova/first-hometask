@@ -6,5 +6,7 @@ export const refs = {
     modal: document.querySelector('.backdrop'),
     modalContent: document.querySelector('.modal-container'),
     modalTitle: document.querySelector('.modal-title'),
-    modalForm: document.querySelector('.modal-form')
-  };
+    modalForm: document.querySelector('.modal-form'),
+    note: {},
+    index: "",
+    };

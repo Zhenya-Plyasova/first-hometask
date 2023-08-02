@@ -1,7 +1,12 @@
 import { notes } from "./notes";
-import { nanoid } from 'nanoid';
-import moment from 'moment';
-import {createMarkupNotesList} from "./noteslist";
 import {refs} from "./refs";
+import { getDataFromForm } from "./helpers";
 
+export function editNote(e){
+        refs.note = {...noteToEdit};
+        getDataFromForm(e);
+    };
 
+export function saveEditedNote(index){
+notes[index]={...refs.note}
+}
