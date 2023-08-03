@@ -1,61 +1,61 @@
-import { notes, archivedNotes } from "./notes";
-import { refs } from "./refs";
-import { toggleModal } from "./modal";
-import {createModalMarkup} from "./modal";
-import { noteMarkup } from "./markup";
-import { createCategoryMarkup } from "./categories-list";
+import { notes, archivedNotes } from './notes';
+import { refs } from './refs';
+import { toggleModal } from './modal';
+import { createModalMarkup } from './modal';
+import { noteMarkup } from './markup';
+import { createCategoryMarkup } from './categories-list';
 
-let markup = "";
+let markup = '';
 
-function onButtonClick(e){
-const deleteButton = e.target.closest(`#delete-button`);
-const editButton = e.target.closest(`#edit-button`);
-const archiveButton = e.target.closest(`#archive-button`);
-const noteEl = e.target.closest('.task-element');
+function onButtonClick(e) {
+  const deleteButton = e.target.closest(`#delete-button`);
+  const editButton = e.target.closest(`#edit-button`);
+  const archiveButton = e.target.closest(`#archive-button`);
+  const noteEl = e.target.closest('.task-element');
   let noteIndex = notes.findIndex(note => note.id === noteEl.id);
   let archiveNoteIndex = archivedNotes.findIndex(note => note.id === noteEl.id);
   if (deleteButton) {
-  
     if (noteIndex !== -1) {
       notes.splice(noteIndex, 1);
       createMarkupNotesList(notes);
-    }
-    else if (archiveNoteIndex !== -1) {
+    } else if (archiveNoteIndex !== -1) {
       archivedNotes.splice(archiveNoteIndex, 1);
       createMarkupNotesList(archivedNotes);
     }
-    
-}
+  }
   if (archiveButton) {
     if (noteIndex !== -1) {
       notes[noteIndex].isArchived = true;
-    archivedNotes.push(notes[noteIndex]);
-    notes.splice(noteIndex, 1);
-    createMarkupNotesList(notes);
+      archivedNotes.push(notes[noteIndex]);
+      notes.splice(noteIndex, 1);
+      createMarkupNotesList(notes);
     } else if (archiveNoteIndex !== -1) {
       archivedNotes[archiveNoteIndex].isArchived = false;
       notes.push(archivedNotes[archiveNoteIndex]);
       archivedNotes.splice(archiveNoteIndex, 1);
-    createMarkupNotesList(archivedNotes);
+      createMarkupNotesList(archivedNotes);
+    }
+  }
+  if (editButton) {
+    let noteToEdit = {};
+    let text = 'Edit note';
+    if (noteIndex !== -1) {
+      noteToEdit = notes[noteIndex];
+      createModalMarkup(noteToEdit, text);
+      refs.index = noteIndex;
+      refs.note = { ...noteToEdit };
+      refs.list = notes;
+      toggleModal();
+    } else if (archiveNoteIndex !== -1) {
+      noteToEdit = archivedNotes[archiveNoteIndex];
+      createModalMarkup(noteToEdit, text);
+      refs.index = archiveNoteIndex;
+      refs.note = { ...noteToEdit };
+      refs.list = archivedNotes;
+      toggleModal();
+    }
   }
 }
-  if (editButton) {
-  text = 'Edit note';
-  if (noteIndex !== -1) {
-noteToEdit = notes[noteIndex];
-createModalMarkup(noteToEdit, text);
-    refs.index = noteIndex;
-    refs.list = notes;
-toggleModal();
-    }
-  else if (archiveNoteIndex !== -1) {
-    noteToEdit = archivedNotes[archiveNoteIndex];
-    createModalMarkup(noteToEdit, text);
-    refs.index = archiveNoteIndex;
-    refs.list = archivedNotes;
-    toggleModal();
-    }}
-};
 
 export function createMarkupNotesList(notes) {
   markup = notes
