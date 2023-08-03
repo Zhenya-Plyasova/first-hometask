@@ -3,7 +3,7 @@ import {refs} from "./refs";
 import { getDataFromForm } from "./helpers";
 
 export function editNote(e){
-        refs.note = {...noteToEdit};
+        // refs.note = {...noteToEdit};
         getDataFromForm(e);
     };
 
