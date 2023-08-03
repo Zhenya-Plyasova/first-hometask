@@ -24,6 +24,6 @@ import { getDataFromForm } from "./helpers";
         refs.note.id=nanoid();
         let date = moment();
         refs.note.created=date.format('MMMM DD, YYYY');
-        refs.note.dates=[];
+      refs.note.dates = [];
         getDataFromForm(e);
     }

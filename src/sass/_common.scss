@@ -74,6 +74,22 @@ p{
             fill: rgb(95, 100, 128);
             }
 }
+#archive-button .icon.active {
+    display: block;
+}
+
+#archive-button .icon.archived {
+    display: none;
+}
+
+
+#archive-button[data-status="archived"] .icon.active {
+    display: none;
+}
+
+#archive-button[data-status="archived"] .icon.archived {
+    display: block;
+}
 .buttons-container{
 display: flex;
 align-items: center;
