@@ -30,27 +30,25 @@ export function createModalMarkup(note, text) {
   refs.modalTitle.innerHTML = `${text}`;
 };
 
-const onSubmitModalForm =(e)=>{
-    e.preventDefault();
-    try {
-        if (refs.modalForm.id) {
-          createNewNote(e);
-          addNewNote(refs.note);
-        } else {
-          editNote(e);
-          saveEditedNote(refs.index);
-          refs.index = '';
-        }
-        refs.note = {};
-        e.currentTarget.reset();
-        createMarkupNotesList(notes);
-        toggleModal();
-        refs.modalForm.removeAttribute('id');
-    } catch (error) {
-        
-    }
-    
-}
+const onSubmitModalForm = e => {
+  e.preventDefault();
+  try {
+    if (refs.modalForm.id) {
+      createNewNote(e);
+      addNewNote(refs.note);
+      createMarkupNotesList(notes);
+    } else {
+      editNote(e);
+      saveEditedNote(refs.index, refs.list);
+      refs.index = '';
+      createMarkupNotesList(refs.list);
+      }
+    e.currentTarget.reset();
+    refs.note = {};
+    toggleModal();
+    refs.modalForm.removeAttribute('id');
+  } catch (error) {}
+};
 
 refs.modalForm.addEventListener('submit', onSubmitModalForm);
 

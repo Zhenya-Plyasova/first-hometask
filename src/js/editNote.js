@@ -7,6 +7,6 @@ export function editNote(e){
         getDataFromForm(e);
     };
 
-export function saveEditedNote(index){
-notes[index]={...refs.note}
+export function saveEditedNote(index, list){
+list[index]={...refs.note}
 }
